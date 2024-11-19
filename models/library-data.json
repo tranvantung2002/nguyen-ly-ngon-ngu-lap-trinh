@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Dế Mèn Phiêu Lưu Ký",
+    "author": "Tô Hoài",
+    "year": 1941,
+    "isAvailable": true,
+    "weight": 0.5
+  },
+  {
+    "id": 2,
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "year": 2008,
+    "isAvailable": true,
+    "fileSize": 5
+  },
+  {
+    "id": 3,
+    "title": "Sach toan",
+    "author": "Tung",
+    "year": 2024,
+    "isAvailable": true,
+    "weight": 3
+  }
+]
