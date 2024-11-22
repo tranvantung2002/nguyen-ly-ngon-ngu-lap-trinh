@@ -1,4 +1,4 @@
-import fs from "fs";
+// import fs from "fs";
 
 export class Library {
     constructor(name, dataFilePath) {
@@ -48,39 +48,19 @@ export class Library {
     // Lưu dữ liệu vào file JSON
     saveBooksToFile() {
         try {
-            fs.writeFileSync(this.dataFilePath, JSON.stringify(this.books, null, 2), "utf-8");
+            // fs.writeFileSync(this.dataFilePath, JSON.stringify(this.books, null, 2), "utf-8");
+
+            localStorage.setItem("data", JSON.stringify(this.books));
+
         } catch (err) {
             console.error("Lỗi khi lưu dữ liệu vào file:", err);
         }
     }
 
     // Tải dữ liệu từ file JSON
-    async loadBooksFromFile() {
-        try {
-            if (fs.existsSync(this.dataFilePath)) {
-                const data = fs.readFileSync(this.dataFilePath, "utf-8");
-                const books = JSON.parse(data);
-
-                const bookPromises = books.map(async (book) => {
-                    if (book.weight) {
-                        const { PrintedBook } = await import("./PrintedBook.js");
-                        return new PrintedBook(book.id, book.title, book.author, book.year, book.weight);
-                    } else if (book.fileSize) {
-                        const { DigitalBook } = await import("./DigitalBook.js");
-                        return new DigitalBook(book.id, book.title, book.author, book.year, book.fileSize);
-                    } else {
-                        const { Book } = await import("./Book.js");
-                        return new Book(book.id, book.title, book.author, book.year);
-                    }
-                });
-
-                return await Promise.all(bookPromises);
-            } else {
-                return [];
-            }
-        } catch (err) {
-            console.error("Lỗi khi tải dữ liệu từ file:", err);
-            return [];
-        }
+    loadBooksFromFile(newBook) {
+        newBook.forEach(element => {
+            this.books.push(element);
+        });
     }
 }

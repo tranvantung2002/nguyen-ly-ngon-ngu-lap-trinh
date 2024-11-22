@@ -1,6 +1,6 @@
-import { Library } from "./models/Library.js";
-import { PrintedBook } from "./models/PrintedBook.js";
-import { DigitalBook } from "./models/DigitalBook.js";
+import { Library } from "./Library.js";
+import { PrintedBook } from "./PrintedBook.js";
+import { DigitalBook } from "./DigitalBook.js";
 import readlineSync from "readline-sync";
 
 const library = new Library("Thư viện Thành Phố", "./models/library-data.json");
